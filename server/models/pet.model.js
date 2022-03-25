@@ -3,7 +3,7 @@ const PetSchema = new mongoose.Schema({
     petName: {
         type: String,
         minlength: [3, "Author name must be at least 3 characters long"],
-        required: [true, "Must enter name"]
+        required: [true, "Must enter name"],
     },
     petType: {
     type: String,
@@ -11,8 +11,7 @@ const PetSchema = new mongoose.Schema({
     enum:[
         "Dog",
         "Cat",
-        "Fish",
-    ]
+     ]
     },
     petGender: String,
     petAge: Number,
@@ -25,6 +24,7 @@ const PetSchema = new mongoose.Schema({
     petSkillOne: String,
     petSkillTwo: String,
     petSkillThree: String,
+    petLike: Number,
 
 }, { timestamps: true });
 

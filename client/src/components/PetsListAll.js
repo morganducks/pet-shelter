@@ -9,7 +9,7 @@ const PetsListAll = (props) => {
 
     const { allPets, setAllPets } = props;
 
-    
+
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/pets")
@@ -38,34 +38,37 @@ const PetsListAll = (props) => {
                 <h1 className="heroText"><Link to="/">Paul&rsquo;s Pet Shelter</Link></h1>
                 <button className="mainButton"><Link to={"/pets/add"}>Put a pet up for adoption</Link></button>
             </div>
+            <div style={{textAlign: "center", marginTop: "40px", marginBottom: "0px", paddingBottom: "0px"}}><h2>Adopt a pet!</h2></div>
+                <div className="petListContainer mainContainer">
+                
+                    {
+                        allPets.map((pets, index) => {
+                            return (
 
-            <div className="petListContainer mainContainer">
-                {
-                    allPets.map((pets, index) => {
-                        return (
-                            <div className="petsBackground" key={index}>
+                                <div className="petsBackground" key={index}>
 
-                                <div className="listContainer" key={pets._id}>
-                                    <Link to={`/pets/${pets._id}`}><img className="petImage" src={pets.petImage} /></Link>
-                                    <Link to={`/pets/${pets._id}`}>
-                                        <h3 className="listName">{pets.petName}</h3></Link>
-                                    <p className="listStyles"><span style={{fontWeight: "700"}}>Type:</span> {pets.petType}</p>
-                                    <p className="listStyles"><span style={{fontWeight: "700"}}>Age:</span> {pets.petAge}</p>
+                                    <div className="listContainer" key={pets._id}>
+                                        <Link to={`/pets/${pets._id}`}><img className="petImage" alt={pets.petName} src={pets.petImage} /></Link>
+                                        <Link to={`/pets/${pets._id}`}>
+                                            <h3 className="listName">{pets.petName}</h3></Link>
+                                        <p className="listStyles"><span style={{ fontWeight: "700" }}>Type:</span> {pets.petType}</p>
+                                        <p className="listStyles"><span style={{ fontWeight: "700" }}>Age:</span> {pets.petAge}</p>
 
-                                    <p className="listStyles"><span style={{fontWeight: "700"}}>Gender:</span> {pets.petGender}</p>
+                                        <p className="listStyles"><span style={{ fontWeight: "700" }}>Gender:</span> {pets.petGender}</p>
 
-                                    <Link to={`/pets/${pets._id}`}><div className="viewLinkBtn">Get to know more about {pets.petName}</div></Link>
+                                        <Link to={`/pets/${pets._id}`}><div className="viewLinkBtn">Get to know more about {pets.petName}</div></Link>
+
+                                    </div>
 
                                 </div>
 
-                            </div>
+                            )
+                        })
+                    }
+                </div>
 
-                        )
-                    })
-                }
             </div>
 
-        </div>
 
     )
 

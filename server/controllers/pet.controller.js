@@ -3,7 +3,6 @@ const Pet = require('../models/pet.model');
 const createPet = (req, res) => {
     Pet.create(req.body)
         .then((createPet) => {
-            
             res.json(createPet);
             console.log("You created a pet!")
         })
@@ -37,9 +36,9 @@ const updatePet = (req, res) => {
     Pet.findOneAndUpdate({ _id: req.params.id },
         req.body,
         { new: true, runValidators: true })
-        .then((updatedPet) => {
-            res.json(updatedPet);
-            console.log(updatedPet);
+        .then((updatePet) => {
+            res.json(updatePet);
+            console.log(updatePet);
             console.log("Successfully updated pet")
         })
         .catch((err) => {

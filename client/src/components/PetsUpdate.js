@@ -77,8 +77,9 @@ const PetsUpdate = (props) => {
             </div>
 
             <div className="petListContainer mainContainer">
-            <img className="editPageImg" src={petImage} />
-                <h2>Edit {petName}'s information</h2>
+                <div><h2>Edit {petName}'s information</h2></div>
+                <img className="editPageImg" src={petImage} />
+
                 <form onSubmit={submitHandler}>
                     <div style={{ marginTop: "40px" }}>
                         <div className="petsRow">
@@ -87,29 +88,35 @@ const PetsUpdate = (props) => {
                                 setPetName(e.target.value)
                             }}
                                 type="text" name="Name" />
+                            <br />
+                            {
+                                errors.petName ?
+                                    <span className="errorMessage">{errors.petName.message}</span>
+                                    : null
+                            }
                         </div>
 
                         <div className="petsRow">
-                                <label>Pet Type</label>
-                                <select value={petType} name="petType" onChange={(e) => setPetType(e.target.value)} >
-                                    <option defaultValue hidden>Select a pet type</option>
-                                    <option value="Dog">Dog</option>
-                                    <option value="Cat">Cat</option>
-                                    <option value="Fish">Fish</option>
+                            <label>Pet Type</label>
+                            <select value={petType} name="petType" onChange={(e) => setPetType(e.target.value)} >
+                                <option defaultValue hidden>Select a pet type</option>
+                                <option value="Dog">Dog</option>
+                                <option value="Cat">Cat</option>
+                                <option value="Fish">Fish</option>
 
-                                </select>
+                            </select>
+                            <br />
+                            {
+                                errors.petType ?
+                                    <span className="errorMessage">{errors.petType.message}</span>
+                                    : null
+                            }
 
-                                {
-                                    errors.petType ?
-                                        <span className="errorMessage">{errors.petType.message}</span>
-                                        : null
-                                }
-
-                            </div>
+                        </div>
                         <div className="petsRow">
-                                <label>Pet Image</label>
-                                <input value={petImage} onChange={(e) => setPetImage(e.target.value)} type="text" />
-                            </div>
+                            <label>Pet Image</label>
+                            <input value={petImage} onChange={(e) => setPetImage(e.target.value)} type="text" />
+                        </div>
                         <div className="petsRow">
                             <label htmlFor="Age">Pet Age</label>
                             <input value={petAge} onChange={(e) => {
@@ -118,31 +125,32 @@ const PetsUpdate = (props) => {
                                 type="text" name="Age" />
                         </div>
                         <div className="petsRow">
-                                <label htmlFor="Gender">Pet&rsquo;s Gender</label>
-                                <input type="text" name="Gender" onChange={(e) => setPetGender(e.target.value)}
-                                    value={petGender}
-                                />
-                            </div>
+                            <label htmlFor="Gender">Pet&rsquo;s Gender</label>
+                            <input type="text" name="Gender" onChange={(e) => setPetGender(e.target.value)}
+                                value={petGender}
+                            />
+                        </div>
                         <div className="petsRow">
                             <label htmlFor="Desc">Describe your pet</label>
                             <input value={petDesc} onChange={(e) => setPetDesc(e.target.value)}
-                                type="text" name="Desc"
+                                type="textarea" name="Desc"
                             />
-                                {
-                                    errors.petDesc ?
-                                        <span>{errors.petDesc.message}</span>
-                                        : null
-                                }
+                            <br />
+                            {
+                                errors.petDesc ?
+                                    <span className="errorMessage">{errors.petDesc.message}</span>
+                                    : null
+                            }
                         </div>
 
                         <div className="petsRow">
-                            <label htmlFor="Age">Pet&rsquo;s Skills</label>
+                            <h3>Pet&rsquo;s Skills</h3>
                             <input type="text" name="skillOne" onChange={(e) => setSkillOne(e.target.value)}
                                 value={petSkillOne}
                             />
                             {/* {
                         errors.petsGender?
-                        <span>{errors.petsGender.message}</span>
+                        <span className="errorMessage">{errors.petsGender.message}</span>
                         :null 
                     }*/}
                         </div>
@@ -158,14 +166,14 @@ const PetsUpdate = (props) => {
                             />
                             {/* {
                         errors.petsGender?
-                        <span>{errors.petsGender.message}</span>
+                        <span className="errorMessage">{errors.petsGender.message}</span>
                         :null 
                     }*/}
                         </div>
 
 
                     </div>
-                    <button className="mainButton">Edit {petName}'s info</button>
+                    <button className="mainButton editButton" style={{ marginRight: "30px" }}>Update {petName}'s info</button>
                     <button className="mainButton"><Link to="/">Cancel</Link></button>
                 </form>
             </div>

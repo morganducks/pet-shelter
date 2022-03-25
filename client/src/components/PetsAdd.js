@@ -38,10 +38,10 @@ const PetsAdd = (props) => {
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
-                setPetName("");
-                setPetType("");
-                setPetImage("");
-                setPetGender("");
+                setPetName("")
+                setPetType("")
+                setPetImage("")
+                setPetGender("")
                 setPetAge("")
                 setPetImage("")
                 setPetDesc("")
@@ -69,51 +69,54 @@ const PetsAdd = (props) => {
 
             <div className="mainContainer">
                 <form className="formContainer" onSubmit={submitHandler}>
-                    <div
-                        style={{ marginTop: "40px", marginBottom: "40px", width: "100%" }}>
-                        <h1>Add a Pet for adoption</h1>
-                        <p>* required</p>
-                        <div className="petsRow">
-                            <label htmlFor="Name">Pet&rsquo;s Name*</label>
-                            <input type="text" name="Name" onChange={(e) => setPetName(e.target.value)}
-                                value={petName}
-                            />
-                            <div>
-                                {
-                                    errors.petName ?
-                                        <span className="errorMessage">{errors.petName.message}</span>
-                                        : null
-                                }
+                    <div>
+                        <div className="addButtonRow">
+                            <h2>Add a Pet for adoption</h2>
                             </div>
+                            <div className="addButtonRow">
+                            <p>* required</p>
+                        </div>
+                        <div className="petsRow">
+                            <h3>Pet&rsquo;s Name*</h3>
+                            <input value={petName} type="text" name="Name" onChange={(e) => setPetName(e.target.value)}
+
+                            />
+
+                            {
+                                errors.petName ?
+                                    <span className="errorMessage">{errors.petName.message}</span>
+                                    : null
+                            }
+
                         </div>
 
                         <div className="petsRow">
-                            <label>Pet Type*</label>
+                            <h3>Pet Type*</h3>
                             <select value={petType} name="petType" onChange={(e) => setPetType(e.target.value)} >
                                 <option defaultValue hidden>Select a pet type</option>
                                 <option value="Dog">Dog</option>
                                 <option value="Cat">Cat</option>
                             </select>
-                            <div>
-                                {
-                                    errors.petType ?
-                                        <span className="errorMessage">{errors.petType.message}</span>
-                                        : null
-                                }
-                            </div>
+
+                            {
+                                errors.petType ?
+                                    <span className="errorMessage">{errors.petType.message}</span>
+                                    : null
+                            }
+
                         </div>
                         <div className="petsRow">
-                            <label>Pet Image</label>
+                            <h3>Pet Image</h3>
                             <input value={petImage} onChange={(e) => setPetImage(e.target.value)} type="text" />
                         </div>
                         <div className="petsRow">
-                            <label htmlFor="Gender">Pet&rsquo;s Gender</label>
+                            <h3>Pet&rsquo;s Gender</h3>
                             <input type="text" name="Gender" onChange={(e) => setPetGender(e.target.value)}
                                 value={petGender}
                             />
                         </div>
                         <div className="petsRow">
-                            <label htmlFor="Age">Pet&rsquo;s Age</label>
+                            <h3>Pet&rsquo;s Age</h3>
                             <input type="text" name="Age" onChange={(e) => setPetAge(e.target.value)}
                                 value={petAge}
                             />
@@ -121,20 +124,21 @@ const PetsAdd = (props) => {
                         </div>
 
                         <div className="petsRow">
-                            <label htmlFor="Desc">Describe your pet*</label>
-                            <input type="text" name="Desc" onChange={(e) => setPetDesc(e.target.value)}
+                            <h3>Describe your pet*</h3>
+                            <textarea type="text" name="Desc" onChange={(e) => setPetDesc(e.target.value)}
                                 value={petDesc}
                             />
-                            <div>
-                                {
-                                    errors.petDesc ?
-                                        <span className="errorMessage">{errors.petDesc.message}</span>
-                                        : null
-                                }
-                            </div>
+
+                            {
+                                errors.petDesc ?
+                                    <span className="errorMessage">{errors.petDesc.message}</span>
+                                    : null
+                            }
+
                         </div>
-                        <h3>Pet Skills</h3>                            
+
                         <div className="petsRow">
+                            <h3>Pet Skills</h3>
                             <input type="text" name="skillOne" onChange={(e) => setSkillOne(e.target.value)}
                                 value={petSkillOne}
                             />
@@ -152,14 +156,12 @@ const PetsAdd = (props) => {
                             />
 
                         </div>
-                        <button className="mainButton">Add pet</button>
+                        <div className="addButtonRow">
+                            <button className="mainButton" style={{ marginRight: "30px" }}>Add pet</button>
+                            <button className="mainButton"><Link to="/">Cancel</Link></button>
+                        </div>
                     </div>
-
-                    <button className="mainButton"><Link to="/">Cancel</Link></button>
                 </form>
-
-
-
             </div>
         </div>
     )
