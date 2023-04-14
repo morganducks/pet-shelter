@@ -38,7 +38,7 @@ const PetsListAll = (props) => {
                 <h1 className="heroText"><Link to="/">Paul&rsquo;s Pet Shelter</Link></h1>
                 <button className="mainButton"><Link to={"/pets/add"}>Put a pet up for adoption</Link></button>
             </div>
-            <div style={{textAlign: "center", marginTop: "40px", marginBottom: "0px", paddingBottom: "0px"}}><h2>Adopt a pet!</h2></div>
+            <div style={{textAlign: "center", marginTop: "40px", marginBottom: "0px", paddingBottom: "0px"}}><h2>These pets need a good home!</h2></div>
                 <div className="petListContainer mainContainer">
                 
                     {
@@ -47,17 +47,21 @@ const PetsListAll = (props) => {
 
                                 <div className="petsBackground" key={index}>
 
-                                    <div className="listContainer" key={pets._id}>
-                                        <Link to={`/pets/${pets._id}`}><img className="petImage" alt={pets.petName} src={pets.petImage} /></Link>
-                                        <Link to={`/pets/${pets._id}`}>
+                                    <div className="listContainerHome" key={pets._id}>
+                                        
+                                        <Link className="nameLink" to={`/pets/${pets._id}`}>
                                             <h3 className="listName">{pets.petName}</h3></Link>
-                                        <p className="listStyles"><span style={{ fontWeight: "700" }}>Type:</span> {pets.petType}</p>
-                                        <p className="listStyles"><span style={{ fontWeight: "700" }}>Age:</span> {pets.petAge}</p>
+                                            
+                                            <Link className="petImageLink" to={`/pets/${pets._id}`}><img className="petImage" alt={pets.petName} src={pets.petImage} /></Link>
+                                            
+                                        <p className="listStylesHome"><span style={{ fontWeight: "700"}}>Type: {pets.petType}</span></p>
+                                        {/* <p className="listStyles"><span style={{ fontWeight: "700" }}>Age:</span> {pets.petAge}</p>
 
-                                        <p className="listStyles"><span style={{ fontWeight: "700" }}>Gender:</span> {pets.petGender}</p>
+                                        <p className="listStyles"><span style={{ fontWeight: "700" }}>Gender:</span> {pets.petGender}</p> */}
 
-                                        <Link to={`/pets/${pets._id}`}><div className="viewLinkBtn">Get to know more about {pets.petName}</div></Link>
-
+                                        <div className="viewLinkBtn"><Link to={`/pets/${pets._id}`}>Get to know more about {pets.petName}</Link></div>
+                                        <div className="homeEditLink"><Link to={`/pets/edit/${pets._id}`}>Edit {pets.petName}'s info</Link>
+</div>
                                     </div>
 
                                 </div>

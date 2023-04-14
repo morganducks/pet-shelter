@@ -66,22 +66,23 @@ const PetsAdd = (props) => {
                 <h1 className="heroText"><Link to="/">Paul&rsquo;s Pet Shelter</Link></h1>
                 <button className="mainButton"><Link to={"/pets/add"}>Put a pet up for adoption</Link></button>
             </div>
-
             <div className="mainContainer">
+                <div className="editLink"><Link to={`/`}>Back Home</Link>
+                </div>
+
                 <form className="formContainer" onSubmit={submitHandler}>
                     <div>
                         <div className="addButtonRow">
                             <h2>Add a Pet for adoption</h2>
-                            </div>
-                            <div className="addButtonRow">
+                        </div>
+                        <div className="addButtonRow">
                             <p>* required</p>
                         </div>
                         <div className="petsRow">
                             <h3>Pet&rsquo;s Name*</h3>
                             <input value={petName} type="text" name="Name" onChange={(e) => setPetName(e.target.value)}
-
                             />
-
+                            <br />
                             {
                                 errors.petName ?
                                     <span className="errorMessage">{errors.petName.message}</span>
@@ -97,7 +98,7 @@ const PetsAdd = (props) => {
                                 <option value="Dog">Dog</option>
                                 <option value="Cat">Cat</option>
                             </select>
-
+                            <br />
                             {
                                 errors.petType ?
                                     <span className="errorMessage">{errors.petType.message}</span>
@@ -128,7 +129,7 @@ const PetsAdd = (props) => {
                             <textarea type="text" name="Desc" onChange={(e) => setPetDesc(e.target.value)}
                                 value={petDesc}
                             />
-
+                            <br />
                             {
                                 errors.petDesc ?
                                     <span className="errorMessage">{errors.petDesc.message}</span>
@@ -138,7 +139,7 @@ const PetsAdd = (props) => {
                         </div>
 
                         <div className="petsRow">
-                            <h3>Pet Skills</h3>
+                            <h3>Pet Skills (optional)</h3>
                             <input type="text" name="skillOne" onChange={(e) => setSkillOne(e.target.value)}
                                 value={petSkillOne}
                             />

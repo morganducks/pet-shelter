@@ -77,9 +77,10 @@ const PetsUpdate = (props) => {
             </div>
 
             <div className="petListContainer mainContainer">
+            <div className="editLink"><Link to={`/`}>Back Home</Link>
+                </div>
                 <div><h2>Edit {petName}'s information</h2></div>
                 <img className="editPageImg" src={petImage} />
-
                 <form onSubmit={submitHandler}>
                     <div style={{ marginTop: "40px" }}>
                         <div className="petsRow">
